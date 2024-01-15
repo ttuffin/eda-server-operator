@@ -2,7 +2,7 @@
 dependency:
   name: galaxy
 driver:
-  name: delegated
+  name: docker
 lint: |
   set -e
   yamllint -d "{extends: relaxed, rules: {line-length: {max: 120}}}" .
@@ -35,8 +35,4 @@ provisioner:
   env:
     K8S_AUTH_KUBECONFIG: ${MOLECULE_EPHEMERAL_DIRECTORY}/kubeconfig
     KUBECONFIG: ${MOLECULE_EPHEMERAL_DIRECTORY}/kubeconfig
-verifier:
-  name: ansible
-  lint: |
-    set -e
-    ansible-lint
+

@@ -1,0 +1,12 @@
+- name: Create or update EDA
+  k8s:
+    state: present
+    namespace: '{{ namespace }}'
+    definition: "{{ lookup('template', 'eda_cr_molecule.yml.j2') | from_yaml }}"
+    apply: true
+    wait: yes
+    wait_timeout: 900
+    wait_condition:
+      type: Running
+      reason: Successful
+      status: "True"
