@@ -33,3 +33,5 @@ kustomization.yaml
 *.swo
 *~
 .vscode/
+
+.venv
